@@ -10,6 +10,6 @@
     ssl_verify: "{{ ssl_verify }}"
     action: "backup"
     config_parameters:
-      filename: "{{ backup_path }}/{{ ansible_host }}-backup_config_{{ ansible_date_time.date }}.cfg"
+      filename: "{{ backup_path }}/{{ inventory_hostname }}-config_backup-{{ ansible_date_time.date }}-{{ ansible_date_time.time }}.cfg"
       scope: "global"
 

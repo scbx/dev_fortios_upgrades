@@ -1,0 +1,11 @@
+---
+- name: wait for api
+  uri:
+    url: "https://{{ ansible_host }}/"
+    method: GET
+    status_code: 200
+    validate_certs: no
+  register: result
+  until: result.status == 200
+  retries: 10
+  delay: 10
