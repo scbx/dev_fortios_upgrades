@@ -1,0 +1,7 @@
+---
+- name: backup fortios configuration
+  connection: local
+  hosts: lab-vha-fgt01, lab-vha-fgt02
+  roles:
+    - fortios_backup_config
+

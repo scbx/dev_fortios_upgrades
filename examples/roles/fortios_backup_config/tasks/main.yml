@@ -1,0 +1,15 @@
+---
+- name: fortios config backup
+  fortiosconfig:
+    config: "system config backup"
+    host: "{{ ansible_host }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vdom: "{{ vdom }}"
+    https: "{{ https_state }}"
+    ssl_verify: "{{ ssl_verify }}"
+    action: "backup"
+    config_parameters:
+      filename: "{{ backup_path }}/{{ ansible_host }}-backup_config_{{ ansible_date_time.date }}.cfg"
+      scope: "global"
+

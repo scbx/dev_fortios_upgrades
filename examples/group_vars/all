@@ -1,0 +1,8 @@
+username: admin
+password: P@ssw0rd
+ssl_verify: False
+vdom: "root"
+latest_version: v6.2.4
+backup_path: ./backups
+https_state: True
+ssl_verify: False
