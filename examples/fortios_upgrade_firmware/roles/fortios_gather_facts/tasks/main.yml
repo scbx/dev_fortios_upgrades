@@ -24,3 +24,4 @@
     desired_id: "{{ansible_facts.network_resources.system_firmware_select.results.available.0.id}}"
     desired_version: "{{ansible_facts.network_resources.system_firmware_select.results.available.0.version}}"
   ignore_errors: True
+

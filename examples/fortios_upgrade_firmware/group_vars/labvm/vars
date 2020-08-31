@@ -1,5 +1,5 @@
 ---
 vdom: "root"
-firmware_path: ../../firmware_files
+firmware_path: ../../firmware_files/
 https_state: True
 ssl_verify: False

@@ -1,2 +1,20 @@
 ---
+- name: set fact desired fortios firmware local
+  set_fact:
+    desired_build: "{{upgrade_path[current_version][current_build]}}"
+    desired_major_version: "{{upgrade_path[current_version][current_major_version]}}"
+
+- name: Upgrade FortiOS firmware fortiguard to {{ desired_version.msg }}
+  fortios_system_firmware_upgrade:
+    host:  "{{ ansible_host }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vdom:  "{{ vdom }}"
+    ssl_verify: "False"
+    system_firmware:
+      file_content: "base64"
+      format_partition: "False"
+      filename: "{{firmware_path}}FGT_VM64-v{{desired_major_version}}-build{{ desired_build }}-FORTINET.out"
+      source: "upload"
+  register: fortios_system_firmware_upgrade_result
 
