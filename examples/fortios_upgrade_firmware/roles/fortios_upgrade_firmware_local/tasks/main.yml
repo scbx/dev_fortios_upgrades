@@ -14,7 +14,7 @@
     system_firmware:
       file_content: "base64"
       format_partition: "False"
-      filename: "{{firmware_path}}FGT_VM64-v{{desired_major_version}}-build{{ desired_build }}-FORTINET.out"
+      filename: "{{firmware_path}}{{ device_type }}-v{{desired_major_version}}-build{{ desired_build }}-FORTINET.out"
       source: "upload"
   register: fortios_system_firmware_upgrade_result
 

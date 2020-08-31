@@ -3,3 +3,4 @@ vdom: "root"
 firmware_path: ../../firmware_files/
 https_state: True
 ssl_verify: False
+device_type: FGT_VM64
