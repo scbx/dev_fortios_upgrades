@@ -1,0 +1,29 @@
+---
+name: create fortios system api user group
+  fortios_system_accprofile:
+    host: "{{ ansible_hostname }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vdom: "{{ vdom }}"
+    https: "{{ https_state }}"
+    ssl_verify: "{{ ssl_verify }}"
+    state: "{{ api_user_state }}"
+    system_accprofile:
+
+name: configure fortios system api user
+  fortios_system_api_user:
+    host: "{{ ansible_hostname }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vdom: "{{ vdom }}"
+    https: "{{ https_state }}"
+    ssl_verify: "{{ ssl_verify }}"
+    state: "{{ api_user_state }}"
+    system_api_user:
+      accprofile: "{{ api_acc_group }}"
+      api_key: "{{ api_user_key }}"
+      
+      vdom:
+        -
+          name: "{{ vdom }}"
+      

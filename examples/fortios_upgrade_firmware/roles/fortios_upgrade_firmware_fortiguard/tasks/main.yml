@@ -1,0 +1,17 @@
+---
+- name: Upgrade FortiOS firmware fortiguard to {{ desired_version.msg }}
+  fortios_system_firmware_upgrade:
+    host:  "{{ ansible_host }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vdom:  "{{ vdom }}"
+    ssl_verify: "False"
+    system_firmware:
+      format_partition: "False"
+      filename: "{{ desired_id.msg }}"
+      source: "fortiguard"
+  register: fortios_system_firmware_upgrade_result
+  when: 
+    - desired_build.msg is defined
+    - current_build.msg is defined
+    - desired_build.msg > current_build.msg

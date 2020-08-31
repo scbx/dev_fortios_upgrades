@@ -1,0 +1,12 @@
+---
+- name: fortios config backup
+  fortios_config:
+    host: "{{ ansible_host }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vdom: "{{ vdom }}"
+    #https: "{{ https_state }}"
+    #ssl_verify: "{{ ssl_verify }}"
+    backup: "yes"
+    backup_path: "{{ backup_path }}"
+    backup_filename: "{{ inventory_hostname }}-config_backup-{{ ansible_date_time.date }}-{{ ansible_date_time.time }}.cfg"

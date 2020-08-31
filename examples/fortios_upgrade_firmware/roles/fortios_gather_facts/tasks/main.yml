@@ -1,0 +1,26 @@
+---
+- name: gather current fortios firmware version
+  fortios_facts:
+    host:  "{{ ansible_host }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vdom:  "{{ vdom }}"
+    ssl_verify: "{{ ssl_verify }}"
+    https: "{{ https_state }}"
+    gather_subset:
+      - fact: 'system_firmware_select'
+
+
+- name: set fact current fortios firmware build
+  set_fact:
+    current_build: "{{ansible_facts.network_resources.system_firmware_select.results.current.build}}"
+    current_major_version: "{{ansible_facts.network_resources.system_firmware_select.results.current.major}}"
+    current_version: "{{ansible_facts.network_resources.system_firmware_select.results.current.version}}"
+
+
+- name: set fact desired fortios firmware for fortiguard
+  set_fact:
+    desired_build: "{{ansible_facts.network_resources.system_firmware_select.results.available.0.build}}"
+    desired_id: "{{ansible_facts.network_resources.system_firmware_select.results.available.0.id}}"
+    desired_version: "{{ansible_facts.network_resources.system_firmware_select.results.available.0.version}}"
+  ignore_errors: True
