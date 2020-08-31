@@ -4,7 +4,7 @@
     desired_build: "{{upgrade_path[current_version][current_build]}}"
     desired_major_version: "{{upgrade_path[current_version][current_major_version]}}"
 
-- name: Upgrade FortiOS firmware fortiguard to {{ desired_version.msg }}
+- name: Upgrade FortiOS firmware local to {{ desired_build }}
   fortios_system_firmware_upgrade:
     host:  "{{ ansible_host }}"
     username: "{{ username }}"
