@@ -1,4 +1,10 @@
 ---
+- name: set fact desired fortios firmware for fortiguard
+  set_fact:
+    desired_build: "{{ansible_facts.network_resources.system_firmware_select.results.available.0.build}}"
+    desired_id: "{{ansible_facts.network_resources.system_firmware_select.results.available.0.id}}"
+    desired_version: "{{ansible_facts.network_resources.system_firmware_select.results.available.0.version}}"
+
 - name: Upgrade FortiOS firmware fortiguard to {{ desired_version.msg }}
   fortios_system_firmware_upgrade:
     host:  "{{ ansible_host }}"
@@ -12,6 +18,6 @@
       source: "fortiguard"
   register: fortios_system_firmware_upgrade_result
   when: 
-    - desired_build.msg is defined
-    - current_build.msg is defined
-    - desired_build.msg > current_build.msg
+    - desired_build is defined
+    - current_build is defined
+    - desired_build > current_build

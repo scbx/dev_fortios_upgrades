@@ -17,11 +17,3 @@
     current_major_version: "{{ansible_facts.network_resources.system_firmware_select.results.current.major}}"
     current_version: "{{ansible_facts.network_resources.system_firmware_select.results.current.version}}"
 
-
-- name: set fact desired fortios firmware for fortiguard
-  set_fact:
-    desired_build: "{{ansible_facts.network_resources.system_firmware_select.results.available.0.build}}"
-    desired_id: "{{ansible_facts.network_resources.system_firmware_select.results.available.0.id}}"
-    desired_version: "{{ansible_facts.network_resources.system_firmware_select.results.available.0.version}}"
-  ignore_errors: True
-
