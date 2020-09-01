@@ -5,7 +5,7 @@
     desired_id: "{{ansible_facts.network_resources.system_firmware_select.results.available.0.id}}"
     desired_version: "{{ansible_facts.network_resources.system_firmware_select.results.available.0.version}}"
 
-- name: Upgrade FortiOS firmware fortiguard to {{ desired_version.msg }}
+- name: Upgrade FortiOS firmware fortiguard to {{ desired_version }}
   fortios_system_firmware_upgrade:
     host:  "{{ ansible_host }}"
     username: "{{ username }}"

@@ -1,7 +1,7 @@
 ---
-- name: backup fortios configuration
+- name: fortios upgrade firmware
   connection: local
   hosts: lab-xxx-fgt01
   roles:
     - fortios_gather_facts
-    - fortios_upgrade_firmware_fortiguard
+    #- fortios_upgrade_firmware_fortiguard
