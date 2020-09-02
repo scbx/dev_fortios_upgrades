@@ -1,0 +1,7 @@
+---
+- name: fortios downgrade firmware local
+  connection: local
+  hosts: labvm
+  roles:
+    - fortios_gather_facts
+    - fortios_downgrade_firmware_local

@@ -1,7 +1,7 @@
 ---
 - name: backup fortios configuration
   connection: local
-  hosts: lab-xxx-fgt01
+  hosts: labvm
   roles:
     - fortios_gather_facts
 

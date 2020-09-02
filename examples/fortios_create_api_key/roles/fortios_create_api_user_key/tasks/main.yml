@@ -22,7 +22,6 @@ name: configure fortios system api user
     system_api_user:
       accprofile: "{{ api_acc_group }}"
       api_key: "{{ api_user_key }}"
-      
       vdom:
         -
           name: "{{ vdom }}"

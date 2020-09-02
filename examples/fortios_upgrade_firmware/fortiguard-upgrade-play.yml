@@ -1,7 +1,7 @@
 ---
-- name: fortios upgrade firmware
+- name: fortios upgrade firmware fortiguard
   connection: local
-  hosts: lab-xxx-fgt01
+  hosts: labvm
   roles:
     - fortios_gather_facts
-    #- fortios_upgrade_firmware_fortiguard
+    - fortios_upgrade_firmware_fortiguard

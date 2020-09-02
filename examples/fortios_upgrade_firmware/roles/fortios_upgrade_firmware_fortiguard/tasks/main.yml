@@ -14,7 +14,7 @@
     ssl_verify: "False"
     system_firmware:
       format_partition: "False"
-      filename: "{{ desired_id.msg }}"
+      filename: "{{ desired_id }}"
       source: "fortiguard"
   register: fortios_system_firmware_upgrade_result
   when: 
