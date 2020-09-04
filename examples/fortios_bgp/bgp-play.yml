@@ -1,0 +1,6 @@
+---
+- name: backup fortios configuration
+  connection: local
+  hosts: labvm
+  roles:
+    - fortios_get_bgp
