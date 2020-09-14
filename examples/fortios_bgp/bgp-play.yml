@@ -3,4 +3,4 @@
   connection: local
   hosts: labvm
   roles:
-    - fortios_get_bgp
+    - fortios_get_bgp_info

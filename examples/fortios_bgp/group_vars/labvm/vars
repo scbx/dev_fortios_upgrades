@@ -3,3 +3,4 @@ vdom: "root"
 backup_path: ../../config_backups
 https_state: True
 ssl_verify: False
+bgp_vdom: "data"

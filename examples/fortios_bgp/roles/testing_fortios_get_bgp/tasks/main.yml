@@ -5,7 +5,7 @@
     host: "{{ ansible_host }}"
     username: "{{ username }}"
     password: "{{ password }}"
-    vdom: "{{ vdom }}"
+    vdom: "data"
     https: "{{ https_state }}"
     ssl_verify: "{{ ssl_verify }}"
     action: "get"

@@ -1,4 +1,5 @@
 [labvm]
-lab-xxx-fgt01 ansible_host=192.168.16.191
+lab-xxx-fgt01 ansible_host=192.168.16.19
 #lab-xxx-fgt02 ansible_host=192.168.16.192
 #lab-xxx-fgtvip ansible_host=192.168.16.201
+#lab-xxx-fgt03 ansible_host=192.168.16.17
