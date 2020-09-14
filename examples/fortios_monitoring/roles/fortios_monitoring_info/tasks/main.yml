@@ -1,0 +1,95 @@
+---
+- name: gather current fortios firmware version
+  fortios_facts:
+    host:  "{{ ansible_host }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vdom:  "{{ vdom }}"
+    ssl_verify: "{{ ssl_verify }}"
+    https: "{{ https_state }}"
+    gather_subset:
+      - fact: 'system_firmware_select'
+
+- name: set fact current fortios firmware build
+  set_fact:
+    current_build: "{{ansible_facts.network_resources.system_firmware_select.results.current.build}}"
+    current_major_version: "{{ansible_facts.network_resources.system_firmware_select.results.current.major}}"
+    current_version: "{{ansible_facts.network_resources.system_firmware_select.results.current.version}}"
+    current_minor_version: "{{ansible_facts.network_resources.system_firmware_select.results.current.minor}}"
+
+- name: run 6.2 api play
+  include_tasks: 6.2.yml
+  when: current_major_version == '6' and current_minor_version >= '2'
+
+- name: run 6.0 api play
+  include_tasks: 6.0.yml
+  when: current_major_version == '6' and current_minor_version == '0'
+
+- name: run 5.6 api play
+  include_tasks: 6.0.yml
+  when: current_major_version == '5' and current_minor_version == '6'
+  
+- name: fortios get ha stats
+  fortiosconfig:
+    config: "system ha-statistics"
+    host: "{{ ansible_host }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vdom: "{{ vdom }}"
+    https: "{{ https_state }}"
+    ssl_verify: "{{ ssl_verify }}"
+    action: "get"
+  register: fortios_ha_stats
+
+
+- name: fortios get ha peer info
+  fortiosconfig:
+    config: "system ha-peer"
+    host: "{{ ansible_host }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vdom: "{{ vdom }}"
+    https: "{{ https_state }}"
+    ssl_verify: "{{ ssl_verify }}"
+    action: "get"
+  register: fortios_ha_peer
+
+- name: fortios get ha config
+  fortiosconfig:
+    config: "system ha"
+    host: "{{ ansible_host }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vdom: "{{ vdom }}"
+    https: "{{ https_state }}"
+    ssl_verify: "{{ ssl_verify }}"
+    action: "get"
+  register: fortios_ha_config
+
+
+- name: fortios get system global
+  fortiosconfig:
+    config: "system global"
+    host: "{{ ansible_host }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vdom: "{{ vdom }}"
+    https: "{{ https_state }}"
+    ssl_verify: "{{ ssl_verify }}"
+    action: "get"
+  register: fortios_system_global
+
+
+- name: fortios get bgp state
+  fortiosconfig:
+    config: "router bgp"
+    host: "{{ ansible_host }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vdom: "{{ bgp_vdom }}"
+    https: "{{ https_state }}"
+    ssl_verify: "{{ ssl_verify }}"
+    action: "get"
+  register: fortios_bgp_state
+
+

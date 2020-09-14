@@ -1,0 +1,15 @@
+---
+- name: fortios get bgp routes
+  fortiosconfig:
+    config: "router ipv4"
+    host: "{{ ansible_host }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vdom: "{{ bgp_vdom }}"
+    https: "{{ https_state }}"
+    ssl_verify: "{{ ssl_verify }}"
+    action: "get"
+    config_parameters:
+      type: "bgp"
+  register: fortios_bgp_state
+
