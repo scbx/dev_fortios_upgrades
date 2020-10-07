@@ -4,3 +4,5 @@ backup_path: ../../config_backups
 https_state: True
 ssl_verify: False
 bgp_vdom: "data"
+copy_path: ../../config_backups
+copy_monitor_data: True

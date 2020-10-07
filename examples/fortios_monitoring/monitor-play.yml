@@ -4,4 +4,3 @@
   hosts: labvm
   roles:
     - fortios_monitoring_info
-    #- fortios_get_bgp_info_2

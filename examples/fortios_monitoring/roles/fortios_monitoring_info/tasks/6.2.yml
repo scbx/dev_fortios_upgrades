@@ -13,3 +13,9 @@
       type: "bgp"
   register: fortios_bgp_state
 
+- name: fortios copy bgp routes
+  copy:
+    content: "{{ fortios_bgp_routes }}"
+    dest: "{{ copy_path }}/{{ inventory_hostname }}-monitor-bgp_routes.txt"
+  when: copy_monitor_data == True
+

@@ -41,7 +41,12 @@
     action: "get"
   register: fortios_ha_stats
 
-
+- name: copy ha stats
+  copy:
+    content: "{{ fortios_ha_stats }}"
+    dest: "{{ copy_path }}/{{ inventory_hostname }}-monitor-ha_stats.txt"
+  when: copy_monitor_data == True
+    
 - name: fortios get ha peer info
   fortiosconfig:
     config: "system ha-peer"
@@ -53,6 +58,12 @@
     ssl_verify: "{{ ssl_verify }}"
     action: "get"
   register: fortios_ha_peer
+
+- name: copy ha peer info
+  copy:
+    content: "{{ fortios_ha_peer }}"
+    dest: "{{ copy_path }}/{{ inventory_hostname }}-monitor-ha_peer.txt"
+  when: copy_monitor_data == True
 
 - name: fortios get ha config
   fortiosconfig:
@@ -66,6 +77,11 @@
     action: "get"
   register: fortios_ha_config
 
+- name: copy ha config
+  copy:
+    content: "{{ fortios_ha_config }}"
+    dest: "{{ copy_path }}/{{ inventory_hostname }}-monitor-ha_config.txt"
+  when: copy_monitor_data == True
 
 - name: fortios get system global
   fortiosconfig:
@@ -79,6 +95,11 @@
     action: "get"
   register: fortios_system_global
 
+- name: copy system global
+  copy:
+    content: "{{ fortios_system_global }}"
+    dest: "{{ copy_path }}/{{ inventory_hostname }}-monitor-system_global.txt"
+  when: copy_monitor_data == True
 
 - name: fortios get bgp state
   fortiosconfig:
@@ -90,6 +111,11 @@
     https: "{{ https_state }}"
     ssl_verify: "{{ ssl_verify }}"
     action: "get"
-  register: fortios_bgp_state
+  register: fortios_get_bgp_state
 
+- name: copy bgp state
+  copy:
+    content: "{{ fortios_get_bgp_state }}"
+    dest: "{{ copy_path }}/{{ inventory_hostname }}-monitor-get_bgp_state.txt"
+  when: copy_monitor_data == True
 
