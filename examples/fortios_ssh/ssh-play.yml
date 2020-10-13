@@ -1,0 +1,6 @@
+---
+- name: backup fortios configuration
+  connection: local
+  hosts: labvm
+  roles:
+    - get_router_bgp_ssh

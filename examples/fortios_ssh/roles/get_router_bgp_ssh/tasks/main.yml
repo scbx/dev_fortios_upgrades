@@ -1,0 +1,14 @@
+---
+- name:
+  fortiosconfig:
+    action: "ssh"
+    host: "{{ ansible_host }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vdom: "{{ bgp_vdom }}"
+    https: "{{ https_state }}"
+    ssl_verify: "{{ ssl_verify }}"
+    commands: |
+              config vdom
+              edit "{{ bgp_vdom }}"
+              get router info bgp  summary
